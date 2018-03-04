@@ -1,0 +1,11 @@
+.TableList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    height: 100vh;
+}
+
+.TableList div:nth-child(1) {
+    grid-row: 1 / 4
+}
