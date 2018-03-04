@@ -14,9 +14,6 @@ class TableList extends Component {
             return;
         }
         console.log(result);
-
-        const startTable =
-
         this.props.moveItem(
             result.draggableId,
             result.source.droppableId,
@@ -37,5 +34,10 @@ class TableList extends Component {
         );
     }
 }
+
+TableList.defaultProps = {
+    tables: [],
+    moveItem: f=>f
+};
 
 export default TableList;
