@@ -1,5 +1,6 @@
 import React from 'react'
 import {Draggable} from 'react-beautiful-dnd'
+import './Item.css'
 
 const grid = 8;
 
@@ -10,7 +11,8 @@ const getItemStyle = (isDragging, draggableStyle) => ({
     margin: `0 0 ${grid}px 0`,
 
     // change background colour if dragging
-    background: isDragging ? 'lightgreen' : 'grey',
+    background: isDragging ? '#6a55ff' : '#d8f8ff',
+    color:  isDragging ? '#fff' : '#222',
 
     // styles we need to apply on draggables
     ...draggableStyle,
@@ -30,7 +32,7 @@ const Item = ({id, summary, email, data, index}) => {
                             provided.draggableProps.style
                         )}
                     >
-                        <div>
+                        <div className='Item-data'>
                             <div>{summary}</div>
                             <div>{email}</div>
                             <div>{data}</div>

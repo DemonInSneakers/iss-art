@@ -1,5 +1,6 @@
 import C from './constants'
 
+
 export const moveItem = (id, startTableName, startIndex, endTableName, endIndex) =>
     ({
         type: C.MOVE_ITEM,
@@ -30,3 +31,25 @@ export const getItem = (tableName, id) =>
         tableName,
         id
     });
+
+export const requestPosts  = () => {
+    return {
+        type: C.REQUEST_POSTS
+    }
+};
+
+export const receivePosts = (json) => {
+    return {
+        type: C.RECEIVE_POSTS,
+        items: json
+    }
+};
+
+export const fetchPosts = () => {
+    return (dispatch) => {
+        dispatch(requestPosts());
+        return fetch(`http://localhost:3000/items.json`)
+            .then(response => response.json())
+            .then(json => dispatch(receivePosts(json)))
+    }
+};

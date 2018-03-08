@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import {Tables} from './containers'
 
-class App extends Component {
-        render() {
-        return (
+const App = () => {
+    return(
+        <div className="App">
             <Tables/>
-        );
-    }
-}
+        </div>
+    )
+};
 
 export default App;

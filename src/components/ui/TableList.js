@@ -9,11 +9,15 @@ class TableList extends Component {
         this.onDragEnd = this.onDragEnd.bind(this);
     }
 
+    componentDidMount() {
+        const {fetchPosts} = this.props;
+        fetchPosts()
+    }
+
     onDragEnd(result) {
         if (!result.destination) {
             return;
         }
-        console.log(result);
         this.props.moveItem(
             result.draggableId,
             result.source.droppableId,
@@ -24,7 +28,10 @@ class TableList extends Component {
     }
 
     render() {
-        const {tables} = this.props;
+        const {tables, isFetching} = this.props;
+        if(isFetching) {
+            return <div>Loading...</div>
+        }
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <div className='TableList'>
@@ -37,7 +44,9 @@ class TableList extends Component {
 
 TableList.defaultProps = {
     tables: [],
-    moveItem: f=>f
+    isFetching: false,
+    moveItem: f=>f,
+    fetchPosts: f=>f
 };
 
 export default TableList;

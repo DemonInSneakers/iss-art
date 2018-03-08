@@ -29,6 +29,12 @@ export  const table = (state = {}, action) => {
                     ...state,
                     items: items(state.items, action)
                 };
+        case C.RECEIVE_POSTS:
+            return (state.name !== 'basic') ?
+                state : {
+                    ...state,
+                    items: action.items
+                };
 
         default:
             return state
@@ -50,6 +56,19 @@ export const tables = (state = [], action) => {
             nextState = state.map(c => table(c, addItem(action.endTableName, item)));
             nextState = nextState.map(c => table(c, removeItem(action.startTableName, action.id)));
             return nextState;
+        case C.RECEIVE_POSTS:
+            return state.map(c => table(c, action));
+        default:
+            return state
+    }
+};
+
+export const isFetching = (state = false, action) => {
+    switch (action.type) {
+        case C.REQUEST_POSTS:
+            return true;
+        case C.RECEIVE_POSTS:
+            return false;
         default:
             return state
     }

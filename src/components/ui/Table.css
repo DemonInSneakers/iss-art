@@ -1,0 +1,24 @@
+.Table {
+}
+
+.Table-name {
+    padding: 10px;
+    background-color: #6e62ff;
+    color: #fff;
+}
+
+
+.Table-items {
+    min-height: 200px;
+}
+
+.Table-columns {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    background-color: #6690ff;
+    color: #fff;
+}
+
+.Table-columns div {
+    padding: 10px;
+}

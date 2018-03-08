@@ -1,6 +1,7 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { tables } from './reducers'
+import { combineReducers, createStore, applyMiddleware } from 'redux'
+import thunkMiddleware from 'redux-thunk'
 import initialState from './initialState'
+import {tables, isFetching} from './reducers'
 
 const logger = store => next => action => {
     let result;
@@ -15,7 +16,4 @@ const logger = store => next => action => {
 
 
 
-const storeFactory = (stateData=initialState) =>
-    applyMiddleware(logger)(createStore)(  combineReducers({tables}), stateData  );
-
-export default storeFactory
+export const storeFactory = (stateData = initialState) => applyMiddleware(thunkMiddleware, logger)(createStore)(combineReducers({tables, isFetching}), stateData);
