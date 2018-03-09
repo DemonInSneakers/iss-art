@@ -29,13 +29,13 @@ class TableList extends Component {
 
     render() {
         const {tables, isFetching} = this.props;
-        if(isFetching) {
+        /*if(isFetching) {
             return <div>Loading...</div>
-        }
+        }*/
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <div className='TableList'>
-                    {tables.map((table, index) => <Table key={index} name={table.name} items={table.items}/>)}
+                    {tables.map((table, index) => <Table key={index} name={table.name} items={table.items} isFetching={isFetching}/>)}
                 </div>
             </DragDropContext>
         );

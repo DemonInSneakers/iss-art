@@ -12,9 +12,9 @@ const getListStyle = isDraggingOver => ({
     padding: grid,
 });
 
-const Table = ({ name = "", items = [] }) =>
+const Table = ({ name = "", items = [], isFetching }) =>
     <div className='Table'>
-        <div className='Table-name'>{name}</div>
+        <div className='Table-name'>{name.toUpperCase()}</div>
         <div className='Table-columns'>
             <div>Summary</div>
             <div>From email</div>
@@ -27,6 +27,7 @@ const Table = ({ name = "", items = [] }) =>
                     style={getListStyle(snapshot.isDraggingOver)}
                     className='Table-items'
                 >
+                    {(isFetching) && <div className='Table-preloader'>Loading...</div>}
                     {items.map((item, index) => (
                         <Item key={item.id} {...item} index={index}/>
                     ))}

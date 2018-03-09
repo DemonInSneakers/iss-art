@@ -48,7 +48,7 @@ export const receivePosts = (json) => {
 export const fetchPosts = () => {
     return (dispatch) => {
         dispatch(requestPosts());
-        return fetch(`http://localhost:3000/items.json`)
+        return fetch(`items.json`)
             .then(response => response.json())
             .then(json => dispatch(receivePosts(json)))
     }
